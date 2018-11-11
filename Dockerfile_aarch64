@@ -1,4 +1,4 @@
-FROM aarch64/ubuntu
+FROM ubuntu
 
 # Specify any standard chown format (uid, uid:gid), default to root:root
 ENV GOSU_USER 0:0
