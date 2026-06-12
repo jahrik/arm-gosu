@@ -1,9 +1,21 @@
-# docker gosu
+# arm-gosu
 
+[![Build](https://github.com/jahrik/arm-gosu/actions/workflows/build.yml/badge.svg)](https://github.com/jahrik/arm-gosu/actions/workflows/build.yml)
+
+Multi-arch Ubuntu base image with [gosu](https://github.com/tianon/gosu) and a step-down entrypoint. Set `GOSU_USER` to drop from root to any uid/gid; set `GOSU_CHOWN` to chown directories first.
+
+## Run
+
+```bash
+docker run --rm -e GOSU_USER=nobody:nogroup jahrik/arm-gosu:latest id -un
+# nobody
 ```
-root@casey:~# docker run -it -e GOSU_USER=nobody jahrik/arm-gosu:aarch64 bash
-nobody@e979edc48939:/$ ps waux
-USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-nobody       1  1.4  0.0   3776  2880 pts/0    Ss   00:31   0:00 bash
-nobody      14  0.0  0.0   5288  2408 pts/0    R+   00:31   0:00 ps waux
+
+## Build
+
+```bash
+make build
+make push
 ```
+
+CI: PR builds + step-down check; merge to main pushes multi-arch (amd64/arm64/armv7) to Docker Hub.
