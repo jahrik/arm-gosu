@@ -14,8 +14,8 @@ docker run --rm -e GOSU_USER=nobody:nogroup jahrik/arm-gosu:latest id -un
 ## Build
 
 ```bash
-make build
-make push
+just build
+just push
 ```
 
 CI: PR builds + step-down check; merge to main pushes multi-arch (amd64/arm64/armv7) to Docker Hub.
